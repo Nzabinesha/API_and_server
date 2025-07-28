@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drug Info Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main>
+    <div class="container">
+    <h1>Drug Information Finder</h1>
+    <label for="drugInput">Choose a drug or type your own:</label><br>
+<input list="drugOptions" id="drugInput" name="drugInput" placeholder="Start typing a drug name..." />
+<datalist id="drugOptions">
+  <option value="acetaminophen">
+  <option value="ibuprofen">
+  <option value="amoxicillin">
+  <option value="metformin">
+  <option value="lisinopril">
+  <option value="atorvastatin">
+  <option value="omeprazole">
+  <option value="albuterol">
+  <option value="hydrochlorothiazide">
+  <option value="simvastatin">
+</datalist>
+<br><br>
+<button onclick="searchDrug()">Search</button>
+
+
+    <div id="result"></div>
+    <div class="link">
+      <a href="index.html">Return to the login page</a>
+      <br><a href="advice.html"><button>See Health Advice</button></a>
+
+    </div>
+
+  </div>
+  </main>
+     <footer>
+                    <section class="contact">
+                      
+                        <div class="copyright">
+                            <p>copyright © Merci <i class="fa-solid fa-heart"> </i> by nzabinesha</p>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+
+             
+        </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

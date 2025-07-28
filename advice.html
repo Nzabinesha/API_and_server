@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personalized Drug Advice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Personalized Advice</h1>
+    <div id="adviceBox" class="info-box dosage">
+      <h3>Your Medication Advice</h3>
+      <div id="adviceContent">Loading advice...</div>
+    </div>
+    <a href="index.html"><button>Back to Drug Search</button></a>
+  </div>
+
+  <script>
+const adviceBox = document.getElementById('adviceBox');
+const user = JSON.parse(localStorage.getItem('userInfo'));
+const drug = localStorage.getItem('lastDrug');
+const drugData = JSON.parse(localStorage.getItem('lastDrugData'));
+const conditions = JSON.parse(localStorage.getItem('conditions') || "[]");
+
+if (!user || !drug || !drugData) {
+  adviceBox.innerHTML = "<p style='color: red;'>Missing information. Please go back and search for a drug.</p>";
+} else {
+  const { age, sex, isForUser } = user;
+  const ageNum = parseInt(age);
+  const warnings = (drugData.warnings || []).join(" ").toLowerCase();
+  const interactions = (drugData.drug_interactions || []).join(" ").toLowerCase();
+  const usage = (drugData.indications_and_usage || []).join(" ").toLowerCase();
+  
+  let advice = [];
+
+  // 1. General rules
+  if (isForUser === 'no') {
+    advice.push("⚠️ These medications are not for you. Make sure the real patient consults a doctor.");
+  }
+
+  if (ageNum < 12) {
+    advice.push("👶 Children under 12 should only take medicine under close adult supervision.");
+  } else if (ageNum > 60) {
+    advice.push("👴 Older adults should be cautious. Monitor side effects or talk to a doctor.");
+  }
+
+  if (sex === 'female' && ageNum >= 12) {
+    if (warnings.includes("pregnant") || warnings.includes("pregnancy")) {
+      advice.push("🤰 This drug has pregnancy-related warnings. Please consult your doctor.");
+    }
+  }
+
+  // 2. Condition-specific
+  conditions.forEach(cond => {
+    if (warnings.includes(cond.toLowerCase()) || interactions.includes(cond.toLowerCase())) {
+      advice.push(`⚠️ This drug may not be safe if you have "${cond}".`);
+    }
+  });
+
+  // 3. If no warnings triggered
+  if (advice.length === 0) {
+    advice.push(`✅ No specific warnings found for ${drug}. Follow standard dosage instructions and consult your healthcare provider if unsure.`);
+  }
+
+  // Final output
+  adviceBox.innerHTML = `<h3>Advice for ${drug.toUpperCase()}:</h3>` + advice.map(line => `<p>${line}</p>`).join('');
+}
+</script>
+
+</body>
+</html>

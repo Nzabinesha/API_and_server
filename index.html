@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Smart Drug App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <!-- Introduction Section -->
+
+  <div class="container">
+    <div class="intro">
+  <h1>Welcome to the Smart Drug Info App 💊</h1>
+  <p>This tool allows you to search any drug and learn about its purpose, warnings, usage instructions, and more using verified data from the FDA.</p>
+  <p>Simply enter the name of a medication in the box below, and click "Search" to learn more.</p>
+</div>
+    <h2>User Login</h2>
+    <p>Please fill in your details to personalize your experience:</p>
+    <form onsubmit="saveUserInfo(event)">
+      <label>Age: <input type="number" id="age" required></label><br><br>
+      
+      <label>Sex: 
+        <select id="sex" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </label><br><br>
+      <!-- Add this below the "Sex" selection -->
+<div id="pregnancyQuestion" style="display: none;">
+  <label>Are you pregnant or Breast feeding?
+    <select id="isPregnant">
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </label><br><br>
+</div>
+
+
+      <label>Are the medications for you?
+        <select id="isForUser" required>
+          <option value="">Select</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label><br><br>
+      <label>Select any medical conditions you have today:</label><br>
+<div class="condition-grid">
+  <label><input type="checkbox" name="conditions" value="diabetes"> Diabetes</label>
+  <label><input type="checkbox" name="conditions" value="high_blood_pressure"> HighBloodPressure</label>
+  <label><input type="checkbox" name="conditions" value="kidney_disease"> KidneyDisease</label>
+  <label><input type="checkbox" name="conditions" value="heart_disease"> HeartDisease</label>
+  <label><input type="checkbox" name="conditions" value="none"> None</label>
+</div>
+<br>
+
+      <button type="submit">Continue to Drug Info</button>
+    </form>
+  </div>
+
+  <script>
+    function saveUserInfo(e) {
+      e.preventDefault();
+
+      const age = document.getElementById('age').value;
+      const sex = document.getElementById('sex').value;
+      const isForUser = document.getElementById('isForUser').value;
+
+      localStorage.setItem('userInfo', JSON.stringify({ age, sex, isForUser }));
+
+      // Redirect to the drug info page
+      window.location.href = "login.html";
+    }
+    // Show pregnancy question only if sex is 'female'
+document.getElementById('sex').addEventListener('change', function () {
+  const pregnancyDiv = document.getElementById('pregnancyQuestion');
+  if (this.value === 'female') {
+    pregnancyDiv.style.display = 'block';
+  } else {
+    pregnancyDiv.style.display = 'none';
+  }
+});
+
+function saveUserInfo(e) {
+  e.preventDefault();
+
+  const age = document.getElementById('age').value;
+  const sex = document.getElementById('sex').value;
+  const isForUser = document.getElementById('isForUser').value;
+  const isPregnant = sex === 'female' ? document.getElementById('isPregnant').value : null;
+
+  localStorage.setItem('userInfo', JSON.stringify({ age, sex, isForUser, isPregnant }));
+
+  window.location.href = "login.html";
+}
+
+  </script>
+</body>
+</html>
