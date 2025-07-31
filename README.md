@@ -72,7 +72,7 @@ cd drug-info-app
 3. Build Docker Image
 
 ```bash
-docker build -t nzabineshamerci/drug-info-app:v1 .
+docker build -t nzabineshamerci/drug-info-app:v1.
 ```
 3. Create Docker Network
 
@@ -136,7 +136,7 @@ You should see alternating outputs from both containers.
 
 ![Demo Screenshot](curl.png)
 ![Demo Screenshot](served_by-web-02.png)
-![Demo Screenshot](served_by-web-02.png)
+![Demo Screenshot](served_web-.png)
 
 
 
