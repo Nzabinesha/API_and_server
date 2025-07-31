@@ -103,7 +103,7 @@ frontend http-in
     default_backend servers
 
 backend servers
-    balance roundrobin
+    balance round robin
     server app1 app-web-01:80 check
     server app2 app-web-02:80 check
 ````
@@ -113,7 +113,7 @@ docker run -d --name lb-01 \
   --network webnet \
   -p 80:80 \
   -v $(pwd)/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro \
-  haproxy:latest haproxy -f /etc/haproxy/haproxy.cfg
+  haproxy: latest haproxy -f /etc/haproxy/haproxy.cfg
 ```
 ✅ Verifying Load Balancing
 Edit both containers’ index.html to show which instance served the request:
@@ -130,6 +130,14 @@ Use curl multiple times:
 curl -s http://localhost | grep "Served by"
 You should see alternating outputs from both containers.
 ```
+
+
+📸 Demo Screenshot
+
+![Demo Screenshot](curl.png)
+![Demo Screenshot]()
+
+
 
 🔐 Notes
 This app currently runs on localhost. You can map it to a public IP or domain if needed.
@@ -158,9 +166,7 @@ Some API downtime or rate limiting from FDA API may affect responses.
 
 No user authentication implemented (optional bonus).
 
-📸 Demo Screenshot
 
-(Add your actual screenshot file here)
 
 📌 Author
 Merci Nzabinesha
