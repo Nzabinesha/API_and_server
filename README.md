@@ -46,8 +46,8 @@ v1: Initial stable version
 latest: Same as v1
 
 📹 Demo Video
-🎥 Watch the 2-minute demo video  
-https://www.youtube.com/watch?v=HI5ZsXFvzHM
+🎥 Watch the 2-minute [demo video](https://www.youtube.com/watch?v=HI5ZsXFvzHM)
+
 
 ________________________________________
 
