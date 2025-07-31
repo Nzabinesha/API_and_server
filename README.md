@@ -136,6 +136,7 @@ You should see alternating outputs from both containers.
 
 ![Demo Screenshot](curl.png)
 ![Demo Screenshot](served_by-web-02.png)
+![Demo Screenshot]()
 
 
 
