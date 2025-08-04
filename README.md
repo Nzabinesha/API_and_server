@@ -2,7 +2,7 @@
 Drug Interaction Info App
 **
  
- web application that provides users with real-time information on drug interactions and safety alerts using external APIs.
+ web application that provides users with real-time information on drug interactions and safety alerts using external APIs.  My app can be accessed at https://nzabinesha.github.io/API_and_server/
         
         ✅ Deployed across a multi-container lab infrastructure (Web01, Web02, and Load Balancer Lb01) using Docker and HAProxy.
          🔗 Live via http://localhost.
@@ -173,3 +173,4 @@ No user authentication implemented (optional bonus).
 Merci Nzabinesha
 Student at African Leadership University
 Medicine and Software Engineering
+
