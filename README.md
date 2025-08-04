@@ -2,7 +2,7 @@
 Drug Interaction Info App
 **
  
- web application that provides users with real-time information on drug interactions and safety alerts using external APIs.  My app can be accessed at https://nzabinesha.github.io/API_and_server/
+ A web application that provides users with real-time information on drug interactions and safety alerts using external APIs.  My app can be accessed  at  https://nzabinesha.github.io/API_and_server/ as it is hosted on GitHub
         
         ✅ Deployed across a multi-container lab infrastructure (Web01, Web02, and Load Balancer Lb01) using Docker and HAProxy.
          🔗 Live via http://localhost.
@@ -154,16 +154,16 @@ Make sure Docker is installed and running on your host system.
 
 The app frontend is served by nginx inside the container.
 
-FDA Drug API requires no API key but always check API limits and terms.
+FDA Drug API requires no API key, but always check API limits and terms.
 
 ⚠️ Limitations & Known Issues
 The app is currently only accessible on localhost (127.0.0.1).
 
-No HTTPS / SSL termination configured on HAProxy by default.
+No HTTPS / SSL termination is configured on HAProxy by default.
 
 No persistence layer; data is fetched live from the API on each request.
 
-Some API downtime or rate limiting from FDA API may affect responses.
+Some API downtime or rate limiting from the FDA API may affect responses.
 
 No user authentication implemented (optional bonus).
 
@@ -173,4 +173,5 @@ No user authentication implemented (optional bonus).
 Merci Nzabinesha
 Student at African Leadership University
 Medicine and Software Engineering
+
 
